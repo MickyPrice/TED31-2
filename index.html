@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Human Garbage</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/nes.css@2.1.0/css/nes.min.css">
+    <link rel="stylesheet" href="assets/css/tailwind.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+
+  </head>
+  <body>
+
+    <div class="mx-auto mt-16" style="width:400px;">
+
+      <div class="nes-container is-dark with-title p-0" style="height:500px">
+        <p class="title mb-3">Human Garbage</p>
+        <div class="bg-grey relative" style="height:430px" id="gameArea">
+          <!-- This is where the trash will fall -->
+
+        </div>
+        <!-- The player icon -->
+        <div class="relative" style="height:40px;">
+          <div id="player" style="height:40px;width:40px;left:0" class="absolute"><img src="assets/img/turtle_green.png" class="w-full h-full" alt=""></div>
+        </div>
+      </div>
+
+      <!-- The controls -->
+      <div class="mt-2">
+        <input type="range" min="1" max="89" value="46" class="w-full" id="slider">
+        <span class="block text-center"><i class="fas fa-arrow-left"></i> drag <i class="fas fa-arrow-right"></i></span>
+      </div>
+
+
+    </div>
+
+
+    <script src="assets/js/game.js"></script>
+
+
+  </body>
+</html>
