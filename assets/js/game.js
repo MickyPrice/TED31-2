@@ -1,3 +1,19 @@
+let config = {
+  villianNames: ["Baby McLeod", "Mr McLeod", "Professor McLeod", "Dr McLeod"],
+  currentLevel: 0,
+  timer:0,
+  control:"stop",
+  time: 200,
+  dropSpeed: 10
+}
+
+
+function startGame() {
+  startSpawning()
+  drop(10)
+}
+
+
 // The trash class has everything to do with the creation of the trash.
 class Trash {
   // Assign variables
@@ -38,14 +54,13 @@ trash1.spawn()
 
 function startSpawning() {
   setInterval(function () {
-    var type = 'bottle';
+    var types = ["bottle"];
+    var type = types[Math.floor(Math.random()*types.length)];
     var size = (Math.random() * (14 - 8) + 8);
     var trash = new Trash(0, type, size)
     trash.spawn()
   }, 1500);
 }
-
-
 
 
 
@@ -55,18 +70,20 @@ document.getElementById('slider').oninput = function() {
 }
 
 
-
-function drop(amm, time) {
+// Function to drop items
+function drop(amm) {
   if (amm > 0) {
     setTimeout(function () {
-      dropTrash(  )
+      dropTrash()
       amm = amm - 1
-      drop(amm, time)
-    }, time);
+      drop(amm, config.dropSpeed)
+    }, config.time);
+  }else {
+    drop(10, config.dropSpeed)
   }
 }
 
-
+// Drop trash
 function dropTrash() {
   var elements = document.getElementsByClassName('trash');
   for (var i = 0; i < elements.length; i++) {
