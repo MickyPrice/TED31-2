@@ -47,9 +47,9 @@ class Trash {
 
 
 // Debugging - Create a piece of garbage
-var trash1 = new Trash(5, "bottle", 10)
-trash1.details()
-trash1.spawn()
+// var trash1 = new Trash(5, "bottle", 10)
+// trash1.details()
+// trash1.spawn()
 
 
 function startSpawning() {
