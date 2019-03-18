@@ -46,3 +46,13 @@
   background: #4CAF50;
   cursor: pointer;
 }
+
+
+
+
+/* Hearts */
+#hearts .full, #hearts .empty{
+  width:20px;
+  display:inline-block;
+  /* margin-left:-17px; */
+}

@@ -4,7 +4,8 @@ let config = {
   timer:0,
   control:"stop",
   time: 200,
-  dropSpeed: 10
+  dropSpeed: 100,
+  health: 10
 }
 
 
@@ -93,11 +94,44 @@ function dropTrash() {
     int = int + 10
     elements[i].style.top = int + '%';
 
-    console.log(int);
-
     if (elements[i].style.top == '100%') {
-      console.log("Finished");
+
+      // This variable stores how far left all the objects are,
+      // we can compare this to how far the turtle is
+      // If they are close, we will remove 1 life from the turtle.
+      // It also stored how far the player has moved - 5 and + 5
+      var positions = {}
+      positions.trash = parseInt(elements[i].style.left,10);
+      positions.player = parseInt(document.getElementById('player').style.left, 10);
+      positions.playerPlus = positions.player + 5;
+      positions.playerTake = positions.player - 5;
+
+      // Detect if the trash fell within 5(%) of the player
+      if (positions.trash <= positions.playerPlus && positions.trash >= positions.playerTake) {
+        console.log("Hit");
+      }
+
+
+
+
       elements[i].remove()
     }
   }
+}
+
+
+
+
+
+
+function hurt() {
+  config.health = config.health - 1;
+  var hearts = document.querySelectorAll("#hearts img.full");
+  hearts[hearts.length-1].remove()
+  // Add a empty heart
+  var emp = document.createElement('img')
+  emp.classList.add('empty');
+  emp.src="assets/img/hearts/empty.svg";
+  emp.setAttribute('draggable', 'false');
+  document.getElementById('hearts').appendChild(emp)
 }
