@@ -5,27 +5,38 @@ let config = {
   control:"stop",
   time: 200,
   dropSpeed: 100,
-  health: 10
+  health: 10,
+  enabled: false
 }
 
 
 function startGame() {
+  config.enabled = true;
   startSpawning()
   drop(10)
+  updateHealth()
+
+  // This code makes sure that the user can't lose focus on the movement slider.
+  // This is so that they can use the arrow keys.
+  // Basically, when the user looses focus, force them to focus it again.
+  document.getElementById('slider').focus()
+  document.getElementById('slider').addEventListener('focusout', function(){
+    if(config.enabled == true){
+      document.getElementById('slider').focus()
+    }
+  })
 }
 
 
 // The trash class has everything to do with the creation of the trash.
 class Trash {
   // Assign variables
-  constructor(speed, type, size) {
-    this.speed = speed;
+  constructor(type, size) {
     this.type = type;
     this.size = size;
   }
   // List the details of said garbage item
   details(){
-    console.log(`Speed: ${this.speed}`);
     console.log(`Type: ${this.type}`);
     console.log(`Size: ${this.size}`);
     console.log(`Size(px): ${this.size * 4}px x ${this.size * 4}px`);
@@ -54,12 +65,16 @@ class Trash {
 
 
 function startSpawning() {
-  setInterval(function () {
-    var types = ["bottle"];
-    var type = types[Math.floor(Math.random()*types.length)];
-    var size = (Math.random() * (14 - 8) + 8);
-    var trash = new Trash(0, type, size)
-    trash.spawn()
+  var loop = setInterval(function () {
+    if (config.enabled == true) {
+      var types = ["bottle"];
+      var type = types[Math.floor(Math.random()*types.length)];
+      var size = (Math.random() * (14 - 8) + 8);
+      var trash = new Trash(type, size)
+      trash.spawn()
+    }else {
+      clearInterval(loop)
+    }
   }, 1500);
 }
 
@@ -73,14 +88,16 @@ document.getElementById('slider').oninput = function() {
 
 // Function to drop items
 function drop(amm) {
-  if (amm > 0) {
-    setTimeout(function () {
-      dropTrash()
-      amm = amm - 1
-      drop(amm, config.dropSpeed)
-    }, config.time);
-  }else {
-    drop(10, config.dropSpeed)
+  if (config.enabled == true) {
+    if (amm > 0) {
+      setTimeout(function () {
+        dropTrash()
+        amm = amm - 1
+        drop(amm, config.dropSpeed)
+      }, config.time);
+    }else {
+      drop(10, config.dropSpeed)
+    }
   }
 }
 
@@ -108,7 +125,7 @@ function dropTrash() {
 
       // Detect if the trash fell within 5(%) of the player
       if (positions.trash <= positions.playerPlus && positions.trash >= positions.playerTake) {
-        console.log("Hit");
+        hurt()
       }
 
 
@@ -120,18 +137,41 @@ function dropTrash() {
 }
 
 
+let VARNAME = "aiwfghwaf"
 
 
+// function to hurt the player
+function hurt(amm = 1) {
+  config.health = config.health - amm;
+  updateHealth();
+  document.getElementById('playerImg').src = "assets/img/turtle_red.png";
+  setTimeout(function () {
+    document.getElementById('playerImg').src = "assets/img/turtle_green.png";
+  }, 400);
+}
 
-
-function hurt() {
-  config.health = config.health - 1;
+// This will update the player's health
+// Updating their hearts and if they have 0 or less, they will die
+function updateHealth() {
   var hearts = document.querySelectorAll("#hearts img.full");
-  hearts[hearts.length-1].remove()
-  // Add a empty heart
-  var emp = document.createElement('img')
-  emp.classList.add('empty');
-  emp.src="assets/img/hearts/empty.svg";
-  emp.setAttribute('draggable', 'false');
-  document.getElementById('hearts').appendChild(emp)
+  for (var i = 0; i < hearts.length; i++) {
+    hearts[i].remove()
+  }
+  for (var i = 0; i < config.health; i++) {
+    var newHeart = document.createElement('img')
+    newHeart.classList.add('full')
+    newHeart.src =" assets/img/hearts/full.svg"
+    newHeart.setAttribute('draggable', 'false')
+    document.getElementById('hearts').appendChild(newHeart)
+  }
+  if (config.health <= 0) {
+    stopGame()
+  }
+}
+
+
+// When the user dies
+function stopGame() {
+  config.enabled = false;
+  document.getElementById('game-over-modal').classList.remove('hidden');
 }

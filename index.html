@@ -21,38 +21,50 @@
         <p class="title mb-3">Human Garbage</p>
         <div class="relative" style="height:430px" id="gameArea">
           <div id="hearts" class="absolute pin-t w-full" style="left:20px">
-            <img src="assets/img/hearts/full.svg" class="full" draggable="false">
-            <img src="assets/img/hearts/full.svg" class="full" draggable="false">
-            <img src="assets/img/hearts/full.svg" class="full" draggable="false">
-            <img src="assets/img/hearts/full.svg" class="full" draggable="false">
-            <img src="assets/img/hearts/full.svg" class="full" draggable="false">
-            <img src="assets/img/hearts/full.svg" class="full" draggable="false">
-            <img src="assets/img/hearts/full.svg" class="full" draggable="false">
-            <img src="assets/img/hearts/full.svg" class="full" draggable="false">
-            <img src="assets/img/hearts/full.svg" class="full" draggable="false">
-            <img src="assets/img/hearts/full.svg" class="full" draggable="false">
+
           </div>
           <!-- This is where the trash will fall -->
 
         </div>
         <!-- The player icon -->
-        <div class="relative bg-black pt-1" style="height:51px;">
-          <div id="player" style="height:40px;width:40px;left:46%" class="absolute"><img src="assets/img/turtle_green.png" class="w-full h-full" alt=""></div>
+        <div class="relative bg-yellow-dark pt-1" style="height:51px;background-image:url('assets/img/sand.png')">
+          <div id="player" style="height:40px;width:40px;left:46%" class="absolute"><img id="playerImg" src="assets/img/turtle_green.png" draggable="false" class="w-full h-full" alt=""></div>
         </div>
       </div>
 
       <!-- The controls -->
-      <div class="mt-2">
-        <input type="range" min="1" max="89" value="46" class="w-full" id="slider">
-        <span class="block text-center"><i class="fas fa-arrow-left"></i> drag <i class="fas fa-arrow-right"></i></span>
-      </div>
-
+      <input type="range" min="1" max="89" value="46" class="w-full" style="opacity:0" id="slider">
 
     </div>
 
 
-    <script src="assets/js/game.js"></script>
 
+
+
+  <div id="game-over-modal" class="pin fixed hidden" style="background-color:rgba(255,255,255,0.8)">
+
+    <div class="mx-auto mt-16" style="width:500px;">
+
+    <div class="nes-dialog is-dark is-rounded">
+      <form method="dialog">
+        <p class="title text-red-lighter mb-6">Game over!</p>
+        <p class="">McLeod polluted the oceans so much and you, a nice little turtle, couldn't survive as the ocean was so flooded by garbage.</p>
+        <menu class="dialog-menu">
+          <button class="nes-btn" onclick="location.reload()">Restart</button>
+        </menu>
+      </form>
+    </div>
+  </div>
+
+  </div>
+
+
+
+
+
+
+
+    <script src="assets/js/game.js"></script>
 
   </body>
 </html>
