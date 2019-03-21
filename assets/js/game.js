@@ -63,9 +63,10 @@ class Trash {
 // trash1.details()
 // trash1.spawn()
 
-
+// This function just starts the whole spawning system
 function startSpawning() {
   var loop = setInterval(function () {
+    // check if the game is still in play
     if (config.enabled == true) {
       var types = ["bottle"];
       var type = types[Math.floor(Math.random()*types.length)];
@@ -73,9 +74,10 @@ function startSpawning() {
       var trash = new Trash(type, size)
       trash.spawn()
     }else {
+      // If the game is not still in play, stop spawning
       clearInterval(loop)
     }
-  }, 1500);
+  }, 1500); // How many milliseconds between each spawn (1500 = 1 second)
 }
 
 
@@ -103,11 +105,13 @@ function drop(amm) {
 
 // Drop trash
 function dropTrash() {
+  // Find all tash elements
   var elements = document.getElementsByClassName('trash');
   for (var i = 0; i < elements.length; i++) {
     var leftText = elements[i].style.top.replace('%', '');
     var int = parseInt(leftText, 10)
 
+    // Add 10 to the current element's top (making it go down.)
     int = int + 10
     elements[i].style.top = int + '%';
 
@@ -137,7 +141,6 @@ function dropTrash() {
 }
 
 
-let VARNAME = "aiwfghwaf"
 
 
 // function to hurt the player
@@ -154,9 +157,12 @@ function hurt(amm = 1) {
 // Updating their hearts and if they have 0 or less, they will die
 function updateHealth() {
   var hearts = document.querySelectorAll("#hearts img.full");
+  // loop through the "hearts" var which is an array of all the
+  // "heart" elements on the page, removes them all (Will be replaced later)
   for (var i = 0; i < hearts.length; i++) {
     hearts[i].remove()
   }
+  // Repeats ${config.health} ammount and add a new heart element for each.
   for (var i = 0; i < config.health; i++) {
     var newHeart = document.createElement('img')
     newHeart.classList.add('full')
