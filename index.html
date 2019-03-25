@@ -15,6 +15,10 @@
   </head>
   <body class="select-none">
 
+
+
+
+
     <div class="mx-auto mt-16" style="width:400px;">
 
       <div class="nes-container with-title p-0 bg-repeat bg-blue" style="height:500px; ">
@@ -41,26 +45,64 @@
 
 
 
-  <div id="game-over-modal" class="pin fixed hidden" style="background-color:rgba(255,255,255,0.8)">
+    <div id="game-over-modal" class="pin fixed hidden" style="background-color:rgba(255,255,255,0.8)">
 
-    <div class="mx-auto mt-16" style="width:500px;">
+      <div class="mx-auto mt-16" style="width:500px;">
 
-    <div class="nes-dialog is-dark is-rounded">
-      <form method="dialog">
-        <p class="title text-red-lighter mb-6">Game over!</p>
-        <p class="">McLeod polluted the oceans so much and you, a nice little turtle, couldn't survive as the ocean was so flooded by garbage.</p>
-        <menu class="dialog-menu">
-          <button class="nes-btn" onclick="location.reload()">Restart</button>
-        </menu>
-      </form>
+        <div class="nes-dialog is-dark is-rounded">
+          <form method="dialog">
+            <p class="title text-red-lighter mb-6">Game over!</p>
+            <p class="">McLeod polluted the oceans so much and you, a nice little turtle, couldn't survive as the ocean was so flooded by garbage.</p>
+            <menu class="dialog-menu">
+              <button class="nes-btn" onclick="location.reload()">Restart</button>
+            </menu>
+          </form>
+        </div>
+      </div>
+
     </div>
-  </div>
-
-  </div>
 
 
+    <div id="game-startmenu-modal" class="pin fixed " style="background-color:rgba(255,255,255,0.8)">
+
+      <div class="mx-auto mt-16" style="width:500px;">
+
+        <div class="nes-dialog is-dark is-rounded">
+          <form method="dialog">
+            <p class="text-center title text-green-lighter mb-6">
+              Welcome to<br>
+              <b class="text-2xl">Human Garbage</b>
+            </p>
+            <button type="button" class="nes-btn is-success w-2/3 block mx-auto" onclick="document.getElementById('game-startmenu-modal').classList.add('hidden');document.getElementById('game-startmenu-modal2').classList.remove('hidden')">NEXT</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
 
 
+    <div id="game-startmenu-modal2" class="pin fixed hidden" style="background-color:rgba(255,255,255,0.8)">
+
+      <div class="mx-auto mt-16" style="width:500px;">
+
+        <div class="nes-dialog is-dark is-rounded">
+          <form method="dialog">
+            <p class="text-center title text-green-lighter mb-6">
+              <b class="text-2xl">Human Garbage</b>
+            </p>
+            <p>
+              <b>Your situation:</b>
+              You're a turtle swimming in the ocean, minding your own business.<br>
+              McLeod keeps throwing rubbish into the ocean, contributing a large ammount to the <b>1.5 million pounds</b> of garbage per hour.<br>
+              Your job as the poor little turtle is to dodge the incomming garbage from McLeod.<br>
+              As you go, McLeod will level up from Baby McLeod all the way up to Professor McLeod
+            </p>
+            <button type="button" class="nes-btn is-success w-2/3 block mx-auto" onclick="document.getElementById('game-startmenu-modal2').classList.add('hidden');startGame()">PLAY</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
 
 
 
