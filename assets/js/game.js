@@ -4,9 +4,10 @@ let config = {
   timer:0,
   control:"stop",
   time: 200,
-  dropSpeed: 100,
+  dropSpeed: 500,
   health: 10,
-  enabled: false
+  enabled: false,
+  maxHealth: 10
 }
 
 
@@ -68,7 +69,7 @@ function startSpawning() {
   var loop = setInterval(function () {
     // check if the game is still in play
     if (config.enabled == true) {
-      var types = ["bottle"];
+      var types = ["bottle", "plastic_bag", "can"];
       var type = types[Math.floor(Math.random()*types.length)];
       var size = (Math.random() * (14 - 8) + 8);
       var trash = new Trash(type, size)
@@ -95,10 +96,10 @@ function drop(amm) {
       setTimeout(function () {
         dropTrash()
         amm = amm - 1
-        drop(amm, config.dropSpeed)
+        drop(amm )
       }, config.time);
     }else {
-      drop(10, config.dropSpeed)
+      drop(10 )
     }
   }
 }
@@ -157,11 +158,11 @@ function hurt(amm = 1) {
 // Updating their hearts and if they have 0 or less, they will die
 function updateHealth() {
   var hearts = document.querySelectorAll("#hearts img.full");
+  var emptyHearts = document.querySelectorAll("#hearts img.empty");
   // loop through the "hearts" var which is an array of all the
   // "heart" elements on the page, removes them all (Will be replaced later)
-  for (var i = 0; i < hearts.length; i++) {
-    hearts[i].remove()
-  }
+  for (var i = 0; i < hearts.length; i++) {hearts[i].remove()}
+  for (var i = 0; i < emptyHearts.length; i++) {emptyHearts[i].remove()}
   // Repeats ${config.health} ammount and add a new heart element for each.
   for (var i = 0; i < config.health; i++) {
     var newHeart = document.createElement('img')
@@ -169,6 +170,17 @@ function updateHealth() {
     newHeart.src =" assets/img/hearts/full.svg"
     newHeart.setAttribute('draggable', 'false')
     document.getElementById('hearts').appendChild(newHeart)
+  }
+  // Add the empty hearts
+  var dif = config.maxHealth - config.health;
+  if (dif.maxHealth !== 0){
+    for (var i = 0; i < dif; i++) {
+      var newHeart = document.createElement('img')
+      newHeart.classList.add('empty')
+      newHeart.src =" assets/img/hearts/empty.svg"
+      newHeart.setAttribute('draggable', 'false')
+      document.getElementById('hearts').appendChild(newHeart)
+    }
   }
   if (config.health <= 0) {
     stopGame()
