@@ -1,19 +1,22 @@
 let config = {
-  villianNames: ["Baby McLeod", "Mr McLeod", "Professor McLeod", "Dr McLeod"],
-  currentLevel: 0,
+  villianNames: ["Baby_McLeod", "Mr_McLeod", "Dr_McLeod", "Professor_McLeod"],
+  currentVillian: 0,
   timer:0,
   control:"stop",
   time: 200,
   dropSpeed: 500,
   health: 10,
   enabled: false,
-  maxHealth: 10
+  maxHealth: 10,
 }
 
 
 function startGame() {
   config.enabled = true;
   startSpawning()
+  setTimeout(function () {
+    startSpawning();
+  }, 1000);
   drop(10)
   updateHealth()
 
@@ -26,6 +29,26 @@ function startGame() {
       document.getElementById('slider').focus()
     }
   })
+
+
+
+  // Every 20 seconds, upgrade villian
+  var time = 1;
+  var interval = setInterval(function() {
+    if (config.enabled == true) {
+       if (time <= config.villianNames.length) {
+          upgradeVillian()
+          time++;
+       }
+       else {
+          clearInterval(interval);
+       }
+    }else {
+      clearInterval(interval);
+    }
+  }, 20000);
+
+
 }
 
 
@@ -192,4 +215,30 @@ function updateHealth() {
 function stopGame() {
   config.enabled = false;
   document.getElementById('game-over-modal').classList.remove('hidden');
+}
+
+
+
+
+
+// Upgrading villians
+function upgradeVillian() {
+  // Add 1 to the villian count
+  config.currentVillian++;
+  // If the villian exists in the list of villians
+  if (config.villianNames[config.currentVillian]) {
+    // Update elements on site
+    document.getElementById('villian-image').src = `assets/img/McLeod/${config.villianNames[config.currentVillian]}.png`;
+    document.getElementById('villian-name').innerText = config.villianNames[config.currentVillian].replace('_', ' ');
+
+    // Increase spawn rates
+    startSpawning();
+    setTimeout(function () {
+      startSpawning();
+    }, 1000);
+  }else {
+    // User has won!
+    document.getElementById('game-youWin-modal').classList.remove('hidden');
+    config.enabled = false;
+  }
 }

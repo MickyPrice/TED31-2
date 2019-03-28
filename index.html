@@ -19,7 +19,17 @@
 
 
 
-    <div class="mx-auto mt-16" style="width:400px;">
+    <div class="mx-auto" style="width:400px;">
+
+      <div id="villian-area" class="relative w-2/3 mx-auto">
+        <img id="villian-image" src="assets/img/McLeod/Baby_McLeod.png" class="w-full" alt="">
+        <div class="w-full absolute" style="bottom:25px;">
+          <div class="nes-badge w-full">
+            <span class="is-warning" id="villian-name">Baby McLeod</span>
+          </div>
+        </div>
+      </div>
+
 
       <div class="nes-container with-title p-0 bg-repeat bg-blue" style="height:500px; ">
         <p class="title mb-3">Human Garbage</p>
@@ -82,9 +92,7 @@
 
 
     <div id="game-startmenu-modal2" class="pin fixed hidden" style="background-color:rgba(255,255,255,0.8)">
-
       <div class="mx-auto mt-16" style="width:500px;">
-
         <div class="nes-dialog is-dark is-rounded">
           <form method="dialog">
             <p class="text-center title text-green-lighter mb-6">
@@ -101,8 +109,25 @@
           </form>
         </div>
       </div>
-
     </div>
+
+
+
+
+    <div id="game-youWin-modal" class="pin fixed hidden" style="background-color:rgba(255,255,255,0.8)">
+      <div class="mx-auto mt-16" style="width:500px;">
+        <div class="nes-dialog is-dark is-rounded">
+          <form method="dialog">
+            <p class="text-center title text-green mb-6">
+              <b class="text-2xl">You win!</b>
+            </p>
+            <button type="button" class="nes-btn is-primary w-2/3 block mx-auto"  onclick="location.reload()">Reset game</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
 
 
 
