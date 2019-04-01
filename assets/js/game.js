@@ -1,16 +1,22 @@
+// This object contains all the game data.
+// If you wish to edit any part of the game, you can through here.
 let config = {
-  villianNames: ["Baby_Josh", "Mr_Lees", "Dr_Lees", "Professor_Lees"],
+  // All the villians that can be played (Their names should match their image name in the /assets/Josh/ file,
+  // images should be in .png format. Also, their names should match their names with spaced replaced with underscores)
+  villianNames: ["Baby_Josh", "Mr_Lees", "Dr_Lees", "Professor_Lees", "Lord_Lees"],
+  // This var holds what villian the user is currently up to
   currentVillian: 0,
-  timer:0,
-  control:"stop",
-  time: 200,
-  dropSpeed: 500,
-  health: 10,
+  // If the game is being played or not
   enabled: false,
-  maxHealth: 10,
+  // Time it takes for the trash to fall
+  time: 200,
+  // The user's current health
+  health: 5,
+  // The user's max health
+  maxHealth: 5,
 }
 
-
+// This function sets up all variables and runs all functions to start the game.
 function startGame() {
   config.enabled = true;
   startSpawning()
@@ -29,7 +35,6 @@ function startGame() {
       document.getElementById('slider').focus()
     }
   })
-
 
 
   // Every 20 seconds, upgrade villian
