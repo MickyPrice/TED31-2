@@ -1,5 +1,5 @@
 let config = {
-  villianNames: ["Baby_McLeod", "Mr_McLeod", "Dr_McLeod", "Professor_McLeod"],
+  villianNames: ["Baby_Josh", "Mr_Lees", "Dr_Lees", "Professor_Lees"],
   currentVillian: 0,
   timer:0,
   control:"stop",
@@ -228,7 +228,7 @@ function upgradeVillian() {
   // If the villian exists in the list of villians
   if (config.villianNames[config.currentVillian]) {
     // Update elements on site
-    document.getElementById('villian-image').src = `assets/img/McLeod/${config.villianNames[config.currentVillian]}.png`;
+    document.getElementById('villian-image').src = `assets/img/Josh/${config.villianNames[config.currentVillian]}.png`;
     document.getElementById('villian-name').innerText = config.villianNames[config.currentVillian].replace('_', ' ');
 
     // Increase spawn rates
