@@ -1,6 +1,6 @@
 // This object contains all the game data.
 // If you wish to edit any part of the game, you can through here.
-let config = {
+let CONFIG = {
   // All the villians that can be played (Their names should match their image name in the /assets/Josh/ file,
   // images should be in .png format. Also, their names should match their names with spaced replaced with underscores)
   villianNames: ["Baby_Josh", "Mr_Lees", "Dr_Lees", "Professor_Lees", "Lord_Lees"],
@@ -13,26 +13,26 @@ let config = {
   // The user's current health
   health: 5,
   // The user's max health
-  maxHealth: 5,
-}
+  maxHealth: 5
+};
 
 // This function sets up all variables and runs all functions to start the game.
 function startGame() {
-  config.enabled = true;
-  startSpawning()
+  CONFIG.enabled = true;
+  startSpawning();
   setTimeout(function () {
     startSpawning();
   }, 1000);
-  drop(10)
-  updateHealth()
+  drop(10);
+  updateHealth();
 
   // This code makes sure that the user can't lose focus on the movement slider.
   // This is so that they can use the arrow keys.
   // Basically, when the user looses focus, force them to focus it again.
-  document.getElementById('slider').focus()
+  document.getElementById('slider').focus();
   document.getElementById('slider').addEventListener('focusout', function(){
-    if(config.enabled == true){
-      document.getElementById('slider').focus()
+    if(CONFIG.enabled == true){
+      document.getElementById('slider').focus();
     }
   })
 
@@ -40,9 +40,9 @@ function startGame() {
   // Every 20 seconds, upgrade villian
   var time = 1;
   var interval = setInterval(function() {
-    if (config.enabled == true) {
-       if (time <= config.villianNames.length) {
-          upgradeVillian()
+    if (CONFIG.enabled == true) {
+       if (time <= CONFIG.villianNames.length) {
+          upgradeVillian();
           time++;
        }
        else {
@@ -79,10 +79,10 @@ class Trash {
     element.style.width = `${this.size * 4}px`;
     element.style.height = `${this.size * 4}px`;
 
-    element.style.left = Math.floor(Math.random() * Math.floor(89)) + "%"
+    element.style.left = Math.floor(Math.random() * Math.floor(89)) + "%";
 
     // Add the element to the gameArea
-    document.getElementById('gameArea').prepend(element)
+    document.getElementById('gameArea').prepend(element);
   }
 }
 
@@ -96,15 +96,15 @@ class Trash {
 function startSpawning() {
   var loop = setInterval(function () {
     // check if the game is still in play
-    if (config.enabled == true) {
+    if (CONFIG.enabled == true) {
       var types = ["bottle", "plastic_bag", "can"];
       var type = types[Math.floor(Math.random()*types.length)];
       var size = (Math.random() * (14 - 8) + 8);
-      var trash = new Trash(type, size)
-      trash.spawn()
+      var trash = new Trash(type, size);
+      trash.spawn();
     }else {
       // If the game is not still in play, stop spawning
-      clearInterval(loop)
+      clearInterval(loop);
     }
   }, 1500); // How many milliseconds between each spawn (1500 = 1 second)
 }
@@ -119,15 +119,15 @@ document.getElementById('slider').oninput = function() {
 
 // Function to drop items
 function drop(amm) {
-  if (config.enabled == true) {
+  if (CONFIG.enabled == true) {
     if (amm > 0) {
       setTimeout(function () {
-        dropTrash()
-        amm = amm - 1
-        drop(amm )
-      }, config.time);
+        dropTrash();
+        amm = amm - 1;
+        drop(amm);
+      }, CONFIG.time);
     }else {
-      drop(10 )
+      drop(10);
     }
   }
 }
@@ -138,7 +138,7 @@ function dropTrash() {
   var elements = document.getElementsByClassName('trash');
   for (var i = 0; i < elements.length; i++) {
     var leftText = elements[i].style.top.replace('%', '');
-    var int = parseInt(leftText, 10)
+    var int = parseInt(leftText, 10);
 
     // Add 10 to the current element's top (making it go down.)
     int = int + 10
@@ -158,13 +158,10 @@ function dropTrash() {
 
       // Detect if the trash fell within 5(%) of the player
       if (positions.trash <= positions.playerPlus && positions.trash >= positions.playerTake) {
-        hurt()
+        hurt();
       }
 
-
-
-
-      elements[i].remove()
+      elements[i].remove();
     }
   }
 }
@@ -174,7 +171,7 @@ function dropTrash() {
 
 // function to hurt the player
 function hurt(amm = 1) {
-  config.health = config.health - amm;
+  CONFIG.health = CONFIG.health - amm;
   updateHealth();
   document.getElementById('playerImg').src = "assets/img/turtle_red.png";
   setTimeout(function () {
@@ -191,34 +188,34 @@ function updateHealth() {
   // "heart" elements on the page, removes them all (Will be replaced later)
   for (var i = 0; i < hearts.length; i++) {hearts[i].remove()}
   for (var i = 0; i < emptyHearts.length; i++) {emptyHearts[i].remove()}
-  // Repeats ${config.health} ammount and add a new heart element for each.
-  for (var i = 0; i < config.health; i++) {
-    var newHeart = document.createElement('img')
-    newHeart.classList.add('full')
-    newHeart.src =" assets/img/hearts/full.svg"
-    newHeart.setAttribute('draggable', 'false')
-    document.getElementById('hearts').appendChild(newHeart)
+  // Repeats ${CONFIG.health} ammount and add a new heart element for each.
+  for (var i = 0; i < CONFIG.health; i++) {
+    var newHeart = document.createElement('img');
+    newHeart.classList.add('full');
+    newHeart.src =" assets/img/hearts/full.svg";
+    newHeart.setAttribute('draggable', 'false');
+    document.getElementById('hearts').appendChild(newHeart);
   }
   // Add the empty hearts
-  var dif = config.maxHealth - config.health;
+  var dif = CONFIG.maxHealth - CONFIG.health;
   if (dif.maxHealth !== 0){
     for (var i = 0; i < dif; i++) {
-      var newHeart = document.createElement('img')
-      newHeart.classList.add('empty')
-      newHeart.src =" assets/img/hearts/empty.svg"
-      newHeart.setAttribute('draggable', 'false')
-      document.getElementById('hearts').appendChild(newHeart)
+      var newHeart = document.createElement('img');
+      newHeart.classList.add('empty');
+      newHeart.src =" assets/img/hearts/empty.svg";
+      newHeart.setAttribute('draggable', 'false');
+      document.getElementById('hearts').appendChild(newHeart);
     }
   }
-  if (config.health <= 0) {
-    stopGame()
+  if (CONFIG.health <= 0) {
+    stopGame();
   }
 }
 
 
 // When the user dies
 function stopGame() {
-  config.enabled = false;
+  CONFIG.enabled = false;
   document.getElementById('game-over-modal').classList.remove('hidden');
 }
 
@@ -229,12 +226,12 @@ function stopGame() {
 // Upgrading villians
 function upgradeVillian() {
   // Add 1 to the villian count
-  config.currentVillian++;
+  CONFIG.currentVillian++;
   // If the villian exists in the list of villians
-  if (config.villianNames[config.currentVillian]) {
+  if (CONFIG.villianNames[CONFIG.currentVillian]) {
     // Update elements on site
-    document.getElementById('villian-image').src = `assets/img/Josh/${config.villianNames[config.currentVillian]}.png`;
-    document.getElementById('villian-name').innerText = config.villianNames[config.currentVillian].replace('_', ' ');
+    document.getElementById('villian-image').src = `assets/img/Josh/${CONFIG.villianNames[CONFIG.currentVillian]}.png`;
+    document.getElementById('villian-name').innerText = CONFIG.villianNames[CONFIG.currentVillian].replace('_', ' ');
 
     // Increase spawn rates
     startSpawning();
@@ -244,6 +241,6 @@ function upgradeVillian() {
   }else {
     // User has won!
     document.getElementById('game-youWin-modal').classList.remove('hidden');
-    config.enabled = false;
+    CONFIG.enabled = false;
   }
 }
