@@ -182,34 +182,45 @@ function hurt(amm = 1) {
 // This will update the player's health
 // Updating their hearts and if they have 0 or less, they will die
 function updateHealth() {
-  var hearts = document.querySelectorAll("#hearts img.full");
-  var emptyHearts = document.querySelectorAll("#hearts img.empty");
-  // loop through the "hearts" var which is an array of all the
-  // "heart" elements on the page, removes them all (Will be replaced later)
-  for (var i = 0; i < hearts.length; i++) {hearts[i].remove()}
-  for (var i = 0; i < emptyHearts.length; i++) {emptyHearts[i].remove()}
-  // Repeats ${CONFIG.health} ammount and add a new heart element for each.
-  for (var i = 0; i < CONFIG.health; i++) {
-    var newHeart = document.createElement('img');
-    newHeart.classList.add('full');
-    newHeart.src =" assets/img/hearts/full.svg";
-    newHeart.setAttribute('draggable', 'false');
-    document.getElementById('hearts').appendChild(newHeart);
-  }
-  // Add the empty hearts
-  var dif = CONFIG.maxHealth - CONFIG.health;
-  if (dif.maxHealth !== 0){
-    for (var i = 0; i < dif; i++) {
+
+  // Check if max health is more than min health
+  if (CONFIG.health <= CONFIG.maxHealth) {
+
+    var hearts = document.querySelectorAll("#hearts img.full");
+    var emptyHearts = document.querySelectorAll("#hearts img.empty");
+    // loop through the "hearts" var which is an array of all the
+    // "heart" elements on the page, removes them all (Will be replaced later)
+    for (var i = 0; i < hearts.length; i++) {hearts[i].remove()}
+    for (var i = 0; i < emptyHearts.length; i++) {emptyHearts[i].remove()}
+    // Repeats ${CONFIG.health} ammount and add a new heart element for each.
+    for (var i = 0; i < CONFIG.health; i++) {
       var newHeart = document.createElement('img');
-      newHeart.classList.add('empty');
-      newHeart.src =" assets/img/hearts/empty.svg";
+      newHeart.classList.add('full');
+      newHeart.src =" assets/img/hearts/full.svg";
       newHeart.setAttribute('draggable', 'false');
       document.getElementById('hearts').appendChild(newHeart);
     }
+    // Add the empty hearts
+    var dif = CONFIG.maxHealth - CONFIG.health;
+    if (dif.maxHealth !== 0){
+      for (var i = 0; i < dif; i++) {
+        var newHeart = document.createElement('img');
+        newHeart.classList.add('empty');
+        newHeart.src =" assets/img/hearts/empty.svg";
+        newHeart.setAttribute('draggable', 'false');
+        document.getElementById('hearts').appendChild(newHeart);
+      }
+    }
+    if (CONFIG.health <= 0) {
+      stopGame();
+    }
+
+  }else {
+    // Set max health to current health if max health isn't more than health
+    CONFIG.maxHealth = CONFIG.health;
   }
-  if (CONFIG.health <= 0) {
-    stopGame();
-  }
+
+
 }
 
 
