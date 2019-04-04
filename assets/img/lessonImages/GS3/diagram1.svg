@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="400px" height="200px" viewBox="0 0 400 200" enable-background="new 0 0 400 200" xml:space="preserve">
+<rect x="80.5" y="10.5" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="210" height="46"/>
+<text transform="matrix(1 0 0 1 118 33.5)" font-family="'MyriadPro-Regular'" font-size="12">Is the user’s age 16 or more?</text>
+<text transform="matrix(1 0 0 1 153 45.5)" font-family="'MyriadPro-Regular'" font-size="12">(if age =&lt; 16)</text>
+<line stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="159" y1="56.5" x2="118" y2="128"/>
+<line stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="221" y1="56.5" x2="262" y2="128"/>
+<text transform="matrix(1 0 0 1 246 80)"><tspan x="0" y="0" font-family="'MyriadPro-Regular'" font-size="12">No, they’re not 16 or older</tspan><tspan x="0" y="14.4" font-family="'MyriadPro-Regular'" font-size="12">(Else)</tspan></text>
+<rect x="18.5" y="128.5" fill="none" stroke="#000000" stroke-miterlimit="10" width="161" height="62"/>
+<text transform="matrix(1 0 0 1 43.0752 155.5)"><tspan x="0" y="0" font-family="'MyriadPro-Regular'" font-size="12">This code runs if the user</tspan><tspan x="49.961" y="14.4" font-family="'MyriadPro-Regular'" font-size="12">if 16!</tspan></text>
+<rect x="198.5" y="128.5" fill="none" stroke="#000000" stroke-miterlimit="10" width="161" height="62"/>
+<text transform="matrix(1 0 0 1 217.0752 159.5)"><tspan x="0" y="0" font-family="'MyriadPro-Regular'" font-size="12">This code runs if the user</tspan><tspan x="40.728" y="14.4" font-family="'MyriadPro-Regular'" font-size="12">is not16!</tspan></text>
+<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M285,92.25c0,9.535-13.418,17.25-30,17.25"/>
+</svg>

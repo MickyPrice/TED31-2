@@ -1,138 +1,251 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Human Garbage</title>
+<head>
+  <meta charset="utf-8">
+  <title>TEW31 - Basics of JavaScript</title>
 
-    <link rel="stylesheet" href="https://unpkg.com/nes.css@2.1.0/css/nes.min.css">
-    <link rel="stylesheet" href="assets/css/tailwind.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Meta tags for search engines to read from -->
+  <meta name="author" content="Michael Price">
+  <meta name="description" content="This is the website for the 'you are the teacher' assessment in TEW31">
+  <!-- Stop site from being indexed -->
+  <meta name="robots" content="noindex" />
+  <link rel="shortcut icon" href="./assets/img/logo-128x128.png">
 
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-
-  </head>
-  <body class="select-none">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+  <!-- Stylesheets -->
+  <!-- TailwindCSS - A utility-first CSS framework for rapidly building custom user interfaces. -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+  <!-- FontAwesome - For all the pretty icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- Global CSS sheet - Full of responsive code, styling and all that good stuff -->
+  <link rel="stylesheet" href="./assets/css/global.css">
+
+</head>
+<body>
+
+  <nav id="navbar" class="pin-x pin-t absolute flex items-center justify-between flex-wrap bg-transparent p-6">
+    <div class="flex items-center flex-no-shrink text-white mr-6">
+      <img class="w-10 mr-2" src="./assets/img/logo-128x128.png" alt="">
+      <span class="font-semibold text-xl tracking-tight">TEW31 - <span class="hidden md:inline-block">JavaScript basics</span><span class="inline-block md:hidden">JS basics</span><br><span class="text-xs">by Michael Price</span></span>
+    </div>
+    <div class="block lg:hidden">
+      <button class="flex items-center px-3 py-2 text-white" onclick="document.getElementById('navCollapsable').classList.toggle('hidden');document.getElementById('navbar').classList.toggle('bg-black')">
+        <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+    <div id="navCollapsable" class="hidden w-full lg:block flex-grow lg:flex lg:items-center lg:w-auto">
+      <div class="text-sm lg:flex-grow"></div>
+      <div>
+        <a href="./" class="mt-3 lg:mt-0 mr-6 text-white no-underline hover:text-grey-lighter block lg:inline-block">
+          Home
+        </a>
+        <a href="./#lessons" class="mt-3 lg:mt-0 mr-6 text-white no-underline hover:text-grey-lighter block lg:inline-block">
+          Lessons
+        </a>
+
+        <a href="/app/" class="mt-3 lg:mt-0 uppercase bg-orange no-underline text-white shadow-lg py-2 px-6 rounded-lg block lg:inline-block">Get started for free!</a>
+      </div>
+    </div>
+  </nav>
 
 
 
-    <div class="mx-auto" style="width:400px;">
+  <!-- Header of site - Image from unsplash -->
+  <header class="bg-center bg-cover bg-no-repeat shadow-lg" style="background-image:url('./assets/img/show/jscode.jpg')">
+    <!-- Div provides gradient -->
+    <div class="py-32 px-4 sm:px-12 md:px-32 text-center sm:text-left" style="background-image:linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0))">
+      <h1 class="font-extrabold text-5xl text-white">JavaScript basics</h1>
+      <h2 class="font-thin text-3xl text-white">By Michael Price</h2>
+    </div>
+  </header>
 
-      <div id="villian-area" class="relative w-2/3 mx-auto">
-        <img id="villian-image" src="assets/img/Josh/Baby_Josh.png" class="w-full" alt="">
-        <div class="w-full absolute" style="bottom:25px;">
-          <div class="nes-badge w-full">
-            <span class="is-warning" id="villian-name">Baby Josh</span>
+
+  <section class="md:flex px-4 md:px-0 mx-auto w-full md:w-3/4 lg:w-2/3 mt-16">
+    <div class="md:w-2/3">
+      <h1 class="font-sans text-2xl font-extrabold">What is this?</h1>
+      <p class="mt-4 text-grey-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labor <br>et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate <br>velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div class="md:w-1/3 hidden md:block">
+      <div class="mx-auto mt-4 w-48 h-48 rounded-full shadow-lg bg-center bg-no-repeat bg-cover" style="background-image:url('./assets/img/show/jscode.jpg')"></div>
+    </div>
+  </section>
+
+  <section class="md:flex px-4 md:px-0 mx-auto w-full md:w-3/4 lg:w-2/3 mt-16 text-left md:text-right ">
+    <div class="md:w-1/3 hidden md:block">
+      <div class="mx-auto mt-4 w-48 h-48 rounded-full shadow-lg bg-center bg-no-repeat bg-cover" style="background-image:url('./assets/img/show/jscode.jpg')"></div>
+    </div>
+    <div class="md:w-2/3">
+      <h1 class="font-sans text-2xl font-extrabold">Why should I learn js?</h1>
+      <p class="mt-4 text-grey-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labor <br>et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate <br>velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </section>
+
+
+  <section class="w-full mt-16 py-16 px-8 md:px-24 lg:px-32 bg-green" style="background-image:url('./assets/img/svg/green-topo.svg')">
+    <div class="md:flex md:justify-between">
+      <h1 class="font-thin text-white md:w-1/2">Wanna check out the lessons?</h1>
+      <div class="text-center md:w-1/2">
+        <a href="./create" class="inline-block rounded-full bg-black hover:bg-white hover:text-black text-white shadow-lg transition-fast px-6 py-4 no-underline">Sign up</a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <div class="bg-grey-light py-16">
+
+    <section id="lessons" class="px-4 md:px-0 mx-auto w-full md:w-3/4 lg:w-2/3">
+
+      <h1 class="font-sans text-2xl font-extrabold">Here's a little bit of an overview of the lessons</h1>
+      <div>
+        <h1 class="font-sans text-2xl font-semibold mt-4">Getting started</h1>
+        <div class="mt-4">
+
+          <div class="flex shadow-lg bg-white rounded mt-2">
+            <div class="text-red   text-center px-4 py-2 w-24 text-4xl border-r-4 border-grey-darker">
+              <i class="far fa-handshake"></i>
+            </div>
+            <div class="flex-1 text-3xl pl-4 py-2">
+              What is JavaScript and why should I learn it?
+            </div>
           </div>
-        </div>
-      </div>
 
-
-      <div class="nes-container with-title p-0 bg-repeat bg-blue" style="height:500px; ">
-        <p class="title mb-3">Human Garbage</p>
-        <div class="relative" style="height:430px" id="gameArea">
-          <div id="hearts" class="absolute pin-t w-full" style="left:20px">
-
+          <div class="flex shadow-lg bg-white rounded mt-2">
+            <div class="text-blue   text-center px-4 py-2 w-24 text-4xl border-r-4 border-grey-darker">
+              <i class="fas fa-box-open"></i>
+            </div>
+            <div class="flex-1 text-3xl pl-4 py-2">
+              Various variable types
+            </div>
           </div>
-          <!-- This is where the trash will fall -->
+
+          <div class="flex shadow-lg bg-white rounded mt-2">
+            <div class="text-purple   text-center px-4 py-2 w-24 text-4xl border-r-4 border-grey-darker">
+              <i class="fas fa-brain"></i>
+            </div>
+            <div class="flex-1 text-3xl pl-4 py-2">
+              Starting Statments
+            </div>
+          </div>
+
+          <div class="flex shadow-lg bg-white rounded mt-2">
+            <div class="text-orange-light   text-center px-4 py-2 w-24 text-4xl border-r-4 border-grey-darker">
+              <i class="fas fa-calculator"></i>
+            </div>
+            <div class="flex-1 text-3xl pl-4 py-2">
+              Mastering math
+            </div>
+          </div>
+
+          <div class="flex shadow-lg bg-white rounded mt-2">
+            <div class="text-green   text-center px-4 py-2 w-24 text-4xl border-r-4 border-grey-darker">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <div class="flex-1 text-3xl pl-4 py-2">
+              Figuring out functions
+            </div>
+          </div>
+
+          <div class="flex shadow-lg bg-white rounded mt-2">
+            <div class="text-yellow-dark   text-center px-4 py-2 w-24 text-4xl border-r-4 border-grey-darker">
+              <i class="fas fa-file-contract"></i>
+            </div>
+            <div class="flex-1 text-3xl pl-4 py-2">
+              Diving into the DOM
+            </div>
+          </div>
+
+          <div class="flex shadow-lg bg-white rounded mt-2">
+            <div class="text-pink   text-center px-4 py-2 w-24 text-4xl border-r-4 border-grey-darker">
+              <i class="far fa-hand-pointer"></i>
+            </div>
+            <div class="flex-1 text-3xl pl-4 py-2">
+              Educated Events
+            </div>
+          </div>
+
+
 
         </div>
-        <!-- The player icon -->
-        <div class="relative bg-yellow-dark pt-1" style="height:51px;background-image:url('assets/img/sand.png')">
-          <div id="player" style="height:40px;width:40px;left:46%" class="absolute"><img id="playerImg" src="assets/img/turtle_green.png" draggable="false" class="w-full h-full" alt=""></div>
+
+      </div>
+
+      <div class="mt-6">
+        <h1 class="font-sans text-2xl font-semibold">Building apps!</h1>
+        <div class="mt-4">
+
+
+          <div class="flex shadow-lg bg-white rounded mt-2">
+            <div class="text-green   text-center px-4 py-2 w-24 text-4xl border-r-4 border-grey-darker">
+              <i class="fas fa-dice"></i>
+            </div>
+            <div class="flex-1 text-3xl pl-4 py-2">
+              Build a dice roller
+            </div>
+          </div>
+
+
+          <div class="flex shadow-lg bg-white rounded mt-2">
+            <div class="text-yellow-dark   text-center px-4 py-2 w-24 text-4xl border-r-4 border-grey-darker">
+              <i class="far fa-comment"></i>
+            </div>
+            <div class="flex-1 text-3xl pl-4 py-2">
+              Post comments
+            </div>
+          </div>
+
+          <div class="flex shadow-lg bg-white rounded mt-2">
+            <div class="text-orange   text-center px-4 py-2 w-24 text-4xl border-r-4 border-grey-darker">
+              <i class="fab fa-bitcoin"></i>
+            </div>
+            <div class="flex-1 text-3xl pl-4 py-2">
+              Build a currency converter
+            </div>
+          </div>
+
+          <div class="flex shadow-lg bg-white rounded mt-2">
+            <div class="text-red   text-center px-4 py-2 w-24 text-4xl border-r-4 border-grey-darker">
+              <i class="fas fa-clipboard-list"></i>
+            </div>
+            <div class="flex-1 text-3xl pl-4 py-2">
+              Build a TODO list
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <!-- The controls -->
-      <input type="range" min="1" max="89" value="46" class="w-full mt-4 " id="slider">
-      <p class="text-center"><i class="fas fa-arrow-left"></i> Drag <i class="fas fa-arrow-right"></i></p>
+    </section>
 
-    </div>
 
+  </div>
 
 
 
+  <footer style="background-color:#1a1a1a" class="py-8 border-t-4 border-green-light">
 
-    <div id="game-over-modal" class="pin fixed hidden" style="background-color:rgba(255,255,255,0.8)">
-
-      <div class="mx-auto mt-16" style="width:500px;">
-
-        <div class="nes-dialog is-dark is-rounded">
-          <form method="dialog">
-            <p class="title text-red-lighter mb-6">Game over!</p>
-            <p class="">Josh polluted the oceans so much and you, a nice little turtle, couldn't survive as the ocean was so flooded by garbage.</p>
-            <menu class="dialog-menu">
-              <button class="nes-btn" onclick="location.reload()">Restart</button>
-            </menu>
-          </form>
-        </div>
-      </div>
-
-    </div>
-
-
-    <div id="game-startmenu-modal" class="pin fixed " style="background-color:rgba(255,255,255,0.8)">
-
-      <div class="mx-auto mt-16" style="width:500px;">
-
-        <div class="nes-dialog is-dark is-rounded">
-          <form method="dialog">
-            <p class="text-center title text-green-lighter mb-6">
-              Welcome to<br>
-              <b class="text-2xl">Human Garbage</b>
-            </p>
-            <button type="button" class="nes-btn is-success w-2/3 block mx-auto" onclick="document.getElementById('game-startmenu-modal').classList.add('hidden');document.getElementById('game-startmenu-modal2').classList.remove('hidden')">NEXT</button>
-          </form>
-        </div>
-      </div>
-
-    </div>
-
-
-    <div id="game-startmenu-modal2" class="pin fixed hidden" style="background-color:rgba(255,255,255,0.8)">
-      <div class="mx-auto mt-16" style="width:500px;">
-        <div class="nes-dialog is-dark is-rounded">
-          <form method="dialog">
-            <p class="text-center title text-green-lighter mb-6">
-              <b class="text-2xl">Human Garbage</b>
-            </p>
-            <p>
-              <b>Your situation:</b>
-              You're a turtle swimming in the ocean, minding your own business.<br>
-              Josh Lees keeps throwing rubbish into the ocean, contributing a large ammount to the <b>1.5 million pounds</b> of garbage per hour.<br>
-              Your job as the poor little turtle is to dodge the incomming garbage from Josh.<br>
-              As you go, Josh will level up from Baby Josh all the way up to Professor Lees!
-            </p>
-            <button type="button" class="nes-btn is-success w-2/3 block mx-auto" onclick="document.getElementById('game-startmenu-modal2').classList.add('hidden');startGame()">PLAY</button>
-          </form>
-        </div>
+    <div class="text-center md:text-left px-4 md:px-32">
+      <div class="md:w-1/2 text-white">
+        This website was created for class TEW31 at RHS<br>
+        by <a class="text-blue" href="https://github.com/MickyPrice">Michael Price</a>
       </div>
     </div>
 
-
-
-
-    <div id="game-youWin-modal" class="pin fixed hidden" style="background-color:rgba(255,255,255,0.8)">
-      <div class="mx-auto mt-16" style="width:500px;">
-        <div class="nes-dialog is-dark is-rounded">
-          <form method="dialog">
-            <p class="text-center title text-green mb-6">
-              <b class="text-2xl">You win!</b>
-            </p>
-            <button type="button" class="nes-btn is-primary w-2/3 block mx-auto"  onclick="location.reload()">Reset game</button>
-          </form>
-        </div>
-      </div>
-    </div>
+  </footer>
 
 
 
 
 
-    <script src="assets/js/game.js"></script>
+  <!-- Scripts -->
 
-  </body>
+  <!-- App script -->
+
+
+  <!-- Home script -->
+
+
+</body>
 </html>

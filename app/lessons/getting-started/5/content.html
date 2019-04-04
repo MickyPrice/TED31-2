@@ -1,0 +1,52 @@
+<h1>Having all these different skills is good but how do you call them?</h1>
+<p>
+  It's great to know all these skills but it's pretty hard to make an application without any functions to call them.<br>
+  A function is basically giving a set of different functions a name that can be called on.<br>
+  An example of this is, say I wanted to make a cake, in real life, I wouldn't tell the person to get flour, icing, sugar, decorations etc, I'd just say "bake a cake".<br>
+  This could be considered a function.
+</p>
+
+<h1>How do functions work?</h1>
+<p>
+  Functions are basically sections of code that get run when called.<br>
+  A function has 2 parts, a name and a set of paramaters.<br>
+  A function needs a name but the paramaters are optional, these are basically options for the function.<br>
+  Functions are defined in JS like
+  <code>
+  function name(arg1, arg2, arg3){
+    // This code will run
+  }
+  </code>
+</p>
+<p>
+  In this function, the name of the function is "name", it has 3 arguments called "arg1", "arg2" and "arg3".<br>
+  In the function, if we call one of those arguments, it will return what the user put for them.<br>
+  A good example of this is a mathmatical equation, lets find the area of a square with a function.
+</p>
+<p>
+  <code>
+  function findArea(height, base){
+    var area = 0.5 * base * height;
+    return area;
+  }
+  </code>
+  To call this function, you would write "findArea(10, 8)" (Those numbers are just random ones)<br>
+</p>
+
+<h2>Using IF statments</h2>
+<p>
+  In the example above, the function is great and all but what if a user forgets to put in an argument?<br>
+  To solve this, we will make an if, else statment to check if they have put in both arguments. To do this, we will write the same function with some if statments.
+</p>
+<code>
+  function findArea(height, base){
+    // if height and base
+    if(height && base){
+      var area = 0.5 * base * height;
+      return area;
+    }else{
+      return "Please fill out both arguments";
+    }
+  }
+  
+</code>

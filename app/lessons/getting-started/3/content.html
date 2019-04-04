@@ -1,0 +1,42 @@
+<h1>What is a statment?</h1>
+<hr>
+<p>
+  Statments are basically questions (I know, that doesn't really make sense but that's how it is.)<br>
+  We'll talk about just 2 statments, "IF" and "Else", these are basically questions.<br>
+  There are more statments which are more useful but you'll learn those once you know the basics.<br>
+  Incase you wish to expand your knowledge on this area, your next step should be looking into "For" and "While" loops.
+</p>
+
+<h1>What do these statments do?</h1>
+<hr>
+<h2>IF statments</h2>
+<p>
+  IF statments basically trigger only IF a value is met, for example:
+  <code>
+  var age = 15;
+  if(age =&lt 16) {
+    // This code wont run
+  }
+  </code>
+  The code would not run because the =&lt operator means equal to or more than.<br>
+  We're asking if age (the variable) is more than or equal to 16.
+  Since age is equal to 15, the function wont continue.<br>
+  You may be wondering: How do we deal with a user that's age isn't 16 or more. To do that, we use an else statment:
+</p>
+
+<h2>Else statments</h2>
+<p>
+  An else statment is kind of a fallback, I'll include a diagram explaining the system
+  <img src="/assets/img/lessonImages/GS3/diagram1.svg" alt="">
+  <code>
+  var age = 15;
+  if(age =&lt 16) {
+    // This would not run because
+  }else {
+    // This code will run in this case
+  }
+  </code>
+  <br><br>
+  Basically, the idea of else statments is that they catch everything that does not meet the requirements for the if statment.
+  In the example above, the If statment asks if the age is 16 or above, run the box on the left but if it's not (else), it will run the box on the right.
+</p>
