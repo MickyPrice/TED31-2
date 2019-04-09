@@ -15,10 +15,6 @@
   </head>
   <body class="select-none">
 
-
-
-
-
     <div class="mx-auto" style="width:400px;">
 
       <div id="villian-area" class="relative w-2/3 mx-auto">
@@ -101,9 +97,9 @@
             </p>
             <p>
               <b>Your situation:</b>
-              You're a turtle swimming in the ocean, minding your own business.<br>
-              Josh Lees keeps throwing rubbish into the ocean, contributing a large ammount to the <b>1.5 million pounds</b> of garbage per hour.<br>
-              Your job as the poor little turtle is to dodge the incomming garbage from Josh.<br>
+              Your situation: You're a turtle swimming in the ocean, minding your own business.<br><br>
+              Josh Lees keeps throwing rubbish into the ocean, contributing a large amount to the 1.5 million pounds of garbage per hour.<br><br>
+              Your job as the poor little turtle is to dodge the incoming garbage from Josh.<br><br>
               As you go, Josh will level up from Baby Josh all the way up to Professor Lees!
             </p>
             <button type="button" class="nes-btn is-success w-2/3 block mx-auto" onclick="document.getElementById('game-startmenu-modal2').classList.add('hidden');startGame()">PLAY</button>
@@ -129,10 +125,55 @@
     </div>
 
 
+    <div class="absolute pin-t pin-l">
+      <div class="mx-auto mt-16" style="width:400px;">
+        <div class="nes-dialog is-dark is-rounded">
+          <form method="dialog">
+            <p class="text-left title text-orange mb-6">
+              <b class="text-2xl">Cheats</b>
+            </p>
+            <div class="nes-field mb-6">
+              <label for="name_field">Health</label>
+              <input type="number" id="cheats-health" onclick="setHealth(this.value)" class="nes-input is-success" min="1" placeholder="5" value="5">
+            </div>
+
+            <label for="cheats-villian">Villian</label>
+            <div class="nes-select is-success">
+              <select required id="cheats-villian">
+                <option value="Baby_Josh">Baby_Josh</option>
+                <option value="Mr_Lees">Mr_Lees</option>
+                <option value="Dr_Lees">Dr_Lees</option>
+                <option value="Professor_Lees">Professor_Lees</option>
+                <option value="Lord_Lees">Lord_Lees</option>
+              </select>
+            </div>
+
+            <div class="mt-6">
+              <button type="button" class="block mt-2 w-full nes-btn is-primary">Clear Trash</button>
+              <button type="button" class="block mt-2 w-full nes-btn is-error">DIE</button>
+              <button type="button" class="block mt-2 w-full nes-btn is-warning">Reset Game</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
 
 
 
     <script src="assets/js/game.js"></script>
+
+
+        <script type="text/javascript">
+          function setHealth(value) {
+            CONFIG.maxHealth = value;
+            CONFIG.health = value;
+            updateHealth()
+          }
+        </script>
 
   </body>
 </html>

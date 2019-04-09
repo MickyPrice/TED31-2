@@ -110,10 +110,20 @@ function startSpawning() {
 }
 
 
-
 // When the slider is moved, adjust the left value of the turtle
 document.getElementById('slider').oninput = function() {
-  document.getElementById('player').style.left = this.value + "%";
+  if (this.value > 89) {
+    // If the user's input is too far right
+    document.getElementById('player').style.left =  "89%";
+    this.value = "89";
+  }else if(this.value < 1){
+    // If the user's input is too far left
+    document.getElementById('player').style.left =  "1%";
+    this.value = "1";
+  }else {
+    // User's input is in bounds
+    document.getElementById('player').style.left = this.value + "%";
+  }
 }
 
 
