@@ -145,10 +145,10 @@ function drop(amm) {
 // Drop trash
 function dropTrash() {
   // Find all tash elements
-  var elements = document.getElementsByClassName('trash');
-  for (var i = 0; i < elements.length; i++) {
-    var leftText = elements[i].style.top.replace('%', '');
-    var int = parseInt(leftText, 10);
+    var elements = document.getElementsByClassName('trash');
+    for (var i = 0; i < elements.length; i++) {
+      var leftText = elements[i].style.top.replace('%', '');
+      var int = parseInt(leftText, 10);
 
     // Add 10 to the current element's top (making it go down.)
     int = int + 10

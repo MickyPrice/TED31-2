@@ -125,7 +125,7 @@
     </div>
 
 
-    <div class="absolute pin-t pin-l">
+    <div class="absolute pin-t pin-l hidden" id="cheat-area">
       <div class="mx-auto mt-16" style="width:400px;">
         <div class="nes-dialog is-dark is-rounded">
           <form method="dialog">
@@ -134,24 +134,26 @@
             </p>
             <div class="nes-field mb-6">
               <label for="name_field">Health</label>
-              <input type="number" id="cheats-health" onclick="setHealth(this.value)" class="nes-input is-success" min="1" placeholder="5" value="5">
+              <input type="number" id="cheats-health" onclick="setHealth(this.value)" class="nes-input is-success" min="1" value="5">
             </div>
 
             <label for="cheats-villian">Villian</label>
             <div class="nes-select is-success">
-              <select required id="cheats-villian">
-                <option value="Baby_Josh">Baby_Josh</option>
-                <option value="Mr_Lees">Mr_Lees</option>
-                <option value="Dr_Lees">Dr_Lees</option>
-                <option value="Professor_Lees">Professor_Lees</option>
-                <option value="Lord_Lees">Lord_Lees</option>
+              <select required id="cheats-villian" oninput="setVillian(this.value)">
+                <option value="0">Baby_Josh</option>
+                <option value="1">Mr_Lees</option>
+                <option value="2">Dr_Lees</option>
+                <option value="3">Professor_Lees</option>
+                <option value="4">Lord_Lees</option>
               </select>
             </div>
 
             <div class="mt-6">
-              <button type="button" class="block mt-2 w-full nes-btn is-primary">Clear Trash</button>
-              <button type="button" class="block mt-2 w-full nes-btn is-error">DIE</button>
-              <button type="button" class="block mt-2 w-full nes-btn is-warning">Reset Game</button>
+              <button type="button" class="block mt-2 w-full nes-btn is-primary" onclick="killTrash()">Clear Trash</button>
+              <button type="button" class="block mt-2 w-full nes-btn is-error" onclick="stopGame()">DIE</button>
+              <button type="button" class="block mt-2 w-full nes-btn is-warning" onclick="location.reload()">Reset Game</button>
+
+              <button type="button" class="block mt-2 w-full nes-btn is-error mt-8" onclick="hideCheats()">Close</button>
             </div>
           </form>
         </div>
@@ -167,13 +169,28 @@
     <script src="assets/js/game.js"></script>
 
 
-        <script type="text/javascript">
-          function setHealth(value) {
-            CONFIG.maxHealth = value;
-            CONFIG.health = value;
-            updateHealth()
-          }
-        </script>
+    <script type="text/javascript">
+      function setHealth(value) {
+        CONFIG.maxHealth = value;
+        CONFIG.health = value;
+        updateHealth()
+      }
+      function setVillian(villian) {
+        CONFIG.currentVillian = villian-1;
+        upgradeVillian()
+      }
+      function killTrash() {
+        for (var i = 0; i < document.getElementsByClassName('trash').length; i++) {
+          document.getElementsByClassName('trash')[i].remove();
+        }
+      }
+      function openCheats() {
+        document.getElementById('cheat-area').classList.remove('hidden');
+      }
+      function hideCheats() {
+        document.getElementById('cheat-area').classList.add('hidden');
+      }
+    </script>
 
   </body>
 </html>
