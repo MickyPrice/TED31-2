@@ -153,7 +153,7 @@
               <button type="button" class="block mt-2 w-full nes-btn is-error" onclick="stopGame()">DIE</button>
               <button type="button" class="block mt-2 w-full nes-btn is-warning" onclick="location.reload()">Reset Game</button>
 
-              <button type="button" class="block mt-2 w-full nes-btn is-error mt-8" onclick="hideCheats()">Close</button>
+              <a type="button" class="block mt-2 w-full nes-btn is-error mt-8 hover:no-underline" href="#">Close</a>
             </div>
           </form>
         </div>
@@ -184,6 +184,18 @@
           document.getElementsByClassName('trash')[i].remove();
         }
       }
+
+      window.addEventListener('load', function() {pingCheats()});
+      window.addEventListener('hashchange', function() {pingCheats()});
+
+      function pingCheats() {
+        if (window.location.hash == "#cheating") {
+          openCheats()
+        }else {
+          hideCheats()
+        }
+      }
+
       function openCheats() {
         document.getElementById('cheat-area').classList.remove('hidden');
       }
